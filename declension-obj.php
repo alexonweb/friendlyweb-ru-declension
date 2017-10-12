@@ -16,7 +16,10 @@ Class Word {
     * 1 - множественное дистрибьютивное, листьев
     * 2 - множественное собирательное, листья
     */
-    function declensionType($number) {
+    function declensionType($number) 
+    {
+
+        $number = intval($number); // Возвращает целое значение переменной
 
         $len = strlen($number); // получаем длину строки
 
