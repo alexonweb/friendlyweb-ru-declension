@@ -12,7 +12,7 @@ function declensionNumber($number)
 
         $lastnum =  ( $len == 1 )  ? $number : substr($number, --$len, $len);  // получаем последнюю цифру
 
-        if ($number >= 5 and $number <=20) { // тинейджи множественное собирательное
+        if ($number > 10 and $number <=20) { // тинейджи - множественное собирательное
 
             $declension = 2; // 13 программистов
 
