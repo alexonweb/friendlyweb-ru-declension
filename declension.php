@@ -1,16 +1,22 @@
 <?
 
+Class Word {
 
-/*
-* Возвращает тип склонения слова
-* 0 - единственное число, 1 - множественное дистрибьютивное, 2 - множественное собирательное
-*/
-function declensionNumber($number) 
-{
+    /*
+    * Метод возвращает тип склонения слова в зависимости от числа
+    * 0 - единственное число, - лист
+    * 1 - множественное дистрибьютивное, листьев
+    * 2 - множественное собирательное, листья
+    */
+    static function Declension ($number, $words)
+    {
+        $words = json_decode($words);
+
+        $number = intval($number); // Возвращает целое значение переменной
 
         $len = strlen($number); // получаем длину строки
 
-        $lastnum =  ( $len == 1 )  ? $number : substr($number, --$len, $len);  // получаем последнюю цифру
+        $lastnum =  ( strlen($number) == 1 )  ? $number : substr($number, --$len, $len);  // получаем последнюю цифру
 
         if ($number > 10 and $number <=20) { // тинейджи - множественное собирательное
 
@@ -30,32 +36,14 @@ function declensionNumber($number)
 
         }
 
-        return $declension;
+        return $number . " " . $words[ $declension ];
+
+    }
 
 }
 
 
-/* -------------------------------------------------------------------- */
-/* пример использования */
-
-$i18n_comments = array( "комментарий", "комментария", "комментариев");
-
-$number = 13;
-
-echo $number . " " . $i18n_comments[declensionNumber($number)];
-
-
-/* отладка 
-
-for ($number=0; $number < 500; $number++ ) {
-    echo "<hr>";
-    echo $number . " " . $i18n_comments[declensionNumber($number)];
-    
-}
-
-*/
-
-
+echo Word::Declension(12, '["комментарий", "комментария", "комментариев"]' );
 
 
 ?>
