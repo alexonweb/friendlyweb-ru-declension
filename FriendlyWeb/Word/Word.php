@@ -6,8 +6,8 @@
 
 namespace FriendlyWeb;
 
-Class Word {
-
+Class Word 
+{
     /*
     * Метод возвращает тип склонения слова в зависимости от числа
     * 0 - единственное число, - лист
@@ -17,7 +17,7 @@ Class Word {
     * $number - целое число
     * $words - варианты склонения в формате JSON
     */
-    public static function Declension ($number, $words)
+    public static function Declension($number, $words)
     {
         $words = json_decode($words);
 
@@ -25,7 +25,7 @@ Class Word {
 
         $len = strlen($number); // получаем длину строки
 
-        $lastnum =  ( strlen($number) == 1 )  ? $number : substr($number, --$len, $len);  // получаем последнюю цифру
+        $lastnum =  (strlen($number) == 1)  ? $number : substr($number, --$len, $len);  // получаем последнюю цифру
 
         if ($number > 10 and $number <=20) { // тинейджи - множественное собирательное
 
@@ -35,7 +35,7 @@ Class Word {
 
             $declension = 0; // 1 программист
 
-        } elseif ( $lastnum > 1 and $lastnum < 5 ) { // множественное дистрибьютивное
+        } elseif ($lastnum > 1 and $lastnum < 5) { // множественное дистрибьютивное
 
             $declension = 1; // 3 программиста 
             
